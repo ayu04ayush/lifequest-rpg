@@ -1,0 +1,155 @@
+/* LIFEQUEST Animations & Micro-Interactions */
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(194, 155, 56, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(245, 158, 11, 0.6);
+  }
+}
+
+@keyframes modalPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes levelUpCrownSpin {
+  0% {
+    transform: scale(0) rotate(-45deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2) rotate(10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes floatRewardUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-45px) scale(1.15);
+  }
+}
+
+/* Floating Reward Indicator */
+.reward-floater {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  display: flex;
+  gap: 0.5rem;
+  pointer-events: none;
+  animation: floatRewardUp 1.2s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 50;
+}
+
+.reward-float-xp {
+  background: #0284c7;
+  color: #fff;
+  font-weight: 800;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.5);
+}
+
+.reward-float-gold {
+  background: #d97706;
+  color: #fff;
+  font-weight: 800;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.5);
+}
+
+/* Level Up Modal Backdrop & Card */
+.levelup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 7, 13, 0.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.levelup-card {
+  background: linear-gradient(180deg, #182238 0%, #0d1322 100%);
+  border: 2px solid var(--border-gold);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 2rem;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(245, 158, 11, 0.4), inset 0 0 30px rgba(194, 155, 56, 0.1);
+  animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.levelup-emblem {
+  font-size: 4rem;
+  display: inline-block;
+  animation: levelUpCrownSpin 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.8));
+}
+
+.levelup-title {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #fbbf24;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+  margin-bottom: 0.25rem;
+}
+
+.levelup-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+.levelup-stats-box {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
