@@ -10,7 +10,11 @@ const PORT = process.env.PORT || 8080;
 
 // Enable CORS for frontend dev server
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:3000'],
+origin: [
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'https://lifequest-rpg-kappa.vercel.app'
+],
   credentials: true
 }));
 
