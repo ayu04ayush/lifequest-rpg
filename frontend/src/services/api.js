@@ -1,6 +1,6 @@
 // Centralized API Client for LIFEQUEST
 
-const API_BASE = '/api';
+const API_BASE = import.meta.env.VITE_API_URL || '/api';
 
 export async function apiRequest(endpoint, method = 'GET', data = null) {
   const token = localStorage.getItem('lifequest_token');
